@@ -19,4 +19,4 @@ const createConfig = () => {
 };
 
 const config = createConfig();
-module.exports = withNativeWind(config, { input: "./src/global.css" , });
+module.exports = withNativeWind(config, { input: "./app/globals.css" , });
