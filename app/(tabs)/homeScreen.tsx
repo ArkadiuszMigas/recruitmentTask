@@ -41,7 +41,7 @@ const homeScreen = () => {
             />
           </View>
           <View className=" rounded-full w-[20%] px-2 py-3 mb-6 items-center justify-center">
-            <TouchableOpacity onPress={() => console.log("settings")}>
+            <TouchableOpacity onPress={() => {}}>
               <SettingsIcon width={32} height={32} />
             </TouchableOpacity>
           </View>

@@ -8,10 +8,11 @@ import {
   TextInput,
   FlatList,
 } from "react-native";
-import { useLocalSearchParams } from "expo-router";
+import { router, useLocalSearchParams } from "expo-router";
 import React, { useEffect, useState } from "react";
 import { fetchVideos } from "@/services/youtubeApi";
 import SearchIcon from "@/assets/icons/search-icon-black.svg";
+import { useVideoStore } from "@/stores/videoStorage";
 
 const SearchScreen = () => {
   const { q } = useLocalSearchParams();
@@ -40,28 +41,35 @@ const SearchScreen = () => {
       item.snippet;
 
     return (
-      <View className="mb-6">
-        <Image
-          source={{ uri: thumbnails.high.url }}
-          className="w-full h-48 rounded-xl"
-          resizeMode="cover"
-        />
-        <Text className="text-[13px] text-gray-500 mt-2 font-bold">
-          {channelTitle}
-        </Text>
-        <Text
-          numberOfLines={2}
-          className="text-base font-semibold text-black mt-1"
-        >
-          {title}
-        </Text>
-        <Text numberOfLines={2} className="text-gray-600 text-sm mt-1">
-          {description}
-        </Text>
-        <Text className="text-gray-400 text-xs mt-1">
-          {new Date(publishedAt).toLocaleDateString()}
-        </Text>
-      </View>
+      <TouchableOpacity
+        onPress={() => {
+          useVideoStore.getState().setSelectedVideo(item);
+          router.push("/screens/detailsScreen");
+        }}
+      >
+        <View className="mb-6">
+          <Image
+            source={{ uri: thumbnails.high.url }}
+            className="w-full h-48 rounded-xl"
+            resizeMode="cover"
+          />
+          <Text className="text-[13px] text-gray-500 mt-2 font-bold">
+            {channelTitle}
+          </Text>
+          <Text
+            numberOfLines={2}
+            className="text-base font-semibold text-black mt-1"
+          >
+            {title}
+          </Text>
+          <Text numberOfLines={2} className="text-gray-600 text-sm mt-1">
+            {description}
+          </Text>
+          <Text className="text-gray-400 text-xs mt-1">
+            {new Date(publishedAt).toLocaleDateString()}
+          </Text>
+        </View>
+      </TouchableOpacity>
     );
   };
 
@@ -87,7 +95,7 @@ const SearchScreen = () => {
       </View>
 
       <View className="flex-row justify-end items-center mb-4 mx-4">
-      <TouchableOpacity>
+        <TouchableOpacity>
           <Text className="text-text text-sm font-semibold">
             Sort by: Most popular
           </Text>

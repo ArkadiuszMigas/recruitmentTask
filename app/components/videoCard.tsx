@@ -2,7 +2,7 @@ import { View, Text, Image } from "react-native";
 import React from "react";
 
 const videoCard = ({ data }: { data: any }) => {
-  const { title, thumbnails, publishedAt, channelTitle } = data.snippet;
+  const { title, thumbnails, publishedAt } = data.snippet;
   return (
     <View className="w-60 mr-4">
       <Image
