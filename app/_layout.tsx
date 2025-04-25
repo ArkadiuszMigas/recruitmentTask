@@ -14,6 +14,15 @@ export default function RootLayout() {
   }
 
   return (
-    <Stack screenOptions={{ headerShown: false }}/>
+    <View className="flex-1 font-regular">
+      <Stack screenOptions={{ headerShown: false }}>
+        <Stack.Screen
+          name="(tabs)"
+        />
+        <Stack.Screen
+          name="screens/authScreen"
+        />
+      </Stack>
+    </View>
   );
 }
