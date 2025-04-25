@@ -1,0 +1,25 @@
+import { View, Text, Image } from "react-native";
+import React from "react";
+
+const videoCard = ({ data }: { data: any }) => {
+  const { title, thumbnails, publishedAt, channelTitle } = data.snippet;
+  return (
+    <View className="w-60 mr-4">
+      <Image
+        source={{ uri: thumbnails.medium.url }}
+        className="w-full h-32 rounded-xl"
+        resizeMode="cover"
+      />
+      <Text numberOfLines={2} className="text-gray-700 text-sm">
+        {title}
+      </Text>
+      <View className="flex-row justify-between items-center mt-1">
+        <Text className="text-gray-400 text-xs mt-1 justify-end w-full">
+          {new Date(publishedAt).toLocaleDateString()}
+        </Text>
+      </View>
+    </View>
+  );
+};
+
+export default videoCard;
