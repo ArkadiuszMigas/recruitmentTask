@@ -13,9 +13,9 @@ const videoCard = ({ data }: { data: any }) => {
       <Text numberOfLines={2} className="text-gray-700 text-sm">
         {title}
       </Text>
-      <View className="flex-row justify-between items-center mt-1">
-        <Text className="text-gray-400 text-xs mt-1 justify-end w-full">
-          {new Date(publishedAt).toLocaleDateString()}
+      <View className="flex-row justify-end items-center mt-1 w-full">
+        <Text className="text-gray-400 text-xs mt-1">
+          {new Date(publishedAt).toLocaleDateString("pl-PL")}
         </Text>
       </View>
     </View>

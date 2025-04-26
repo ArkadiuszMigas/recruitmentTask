@@ -41,6 +41,7 @@ const _Layout = () => {
           backgroundColor: "#8c99af",
           borderTopWidth: 0,
           height: 100,
+          zIndex: 100,
         },
       }}
     >

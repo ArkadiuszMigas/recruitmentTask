@@ -27,21 +27,24 @@ const homeScreen = () => {
 
   return (
     <SafeAreaView className="flex-1 bg-white p-4">
-      <ScrollView className="bg-white px-4 pt-6">
+      <ScrollView className="bg-white pt-6">
         <View className="flex-row items-center justify-center rounded-full p-2 mb-4">
-          <View className="flex-row items-center border border-[#2b2d42] rounded-full w-[80%] px-4 py-3 mb-6">
+          <View className="flex-row items-center border-2 border-[#2b2d42] rounded-2xl w-[80%] px-4 py-3 mb-6">
             <SearchIcon width={20} height={20} />
             <TextInput
               value={search}
               onChangeText={setSearch}
               onSubmitEditing={handleSearch}
               placeholder="Search videos"
-              placeholderTextColor="#999"
+              placeholderTextColor="#2B2D4299"
+              placeholderClassName="opacity-60"
               className="flex-1 px-2 text-[16px]"
             />
           </View>
           <View className=" rounded-full w-[20%] px-2 py-3 mb-6 items-center justify-center">
-            <TouchableOpacity onPress={() => {}}>
+            <TouchableOpacity onPress={() => {
+              router.push("/screens/settingsScreen");
+            }}>
               <SettingsIcon width={32} height={32} />
             </TouchableOpacity>
           </View>
