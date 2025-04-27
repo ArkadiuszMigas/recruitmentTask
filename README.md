@@ -34,6 +34,7 @@ yarn install
 ```bash
 npm install react-native-video
 npm install react-native-svg react-native-svg-transformer
+npx expo install nativewind tailwindcss@^3.4.17 react-native-reanimated@3.16.2 react-native-safe-area-context
 ```
 
 4. **Instalacja dodatkowych konfiguracji** (SVG jako komponenty):
