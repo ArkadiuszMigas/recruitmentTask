@@ -6,6 +6,9 @@ export default {
       extra: {
         YOUTUBE_API_KEY: "AIzaSyBC5vSK0DAB8nowa-U64D0-vv5OYqAP1ds",
       },
+      android: {
+        package: "com.anonymous.myapp",
+      },
       
     },
     

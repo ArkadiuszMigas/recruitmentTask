@@ -27,7 +27,7 @@ const homeScreen = () => {
 
   return (
     <SafeAreaView className="flex-1 bg-white p-4">
-      <ScrollView className="bg-white pt-6">
+      <ScrollView className="bg-white pt-6 pb-4">
         <View className="flex-row items-center justify-center rounded-full p-2 mb-4">
           <View className="flex-row items-center border-2 border-[#2b2d42] rounded-2xl w-[80%] px-4 py-3 mb-6">
             <SearchIcon width={20} height={20} />
