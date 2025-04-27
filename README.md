@@ -96,12 +96,9 @@ npx expo run:android --variant release
 W systemowych zmiennych środowiskowych ustaw:
 
 ```plaintext
-JAVA_HOME=C:\Program Files\Java\jdk-11.0.x
+JAVA_HOME=C:\Program Files\Java\jdk-17.0.x
 ```
-Oraz dodaj do PATH:
-```plaintext
-%JAVA_HOME%\bin
-```
+Oraz dodaj do PATH w zmiennych środowiskowych
 
 Sprawdź:
 ```bash
@@ -134,8 +131,3 @@ npx expo start
 cd android && ./gradlew assembleRelease
 ```
 
----
-
-> W razie problemów sprawdź poprawność konfiguracji `JAVA_HOME`, Android SDK oraz wersji Expo SDK.
-
-Powodzenia! 🎉
