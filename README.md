@@ -15,8 +15,7 @@
 1. **Klonuj repozytorium**:
 
 ```bash
-https://github.com/twoje-repozytorium/recruitmentTask.git
-cd recruitmentTask
+git clone https://github.com/ArkadiuszMigas/recruitmentTask.git
 ```
 
 2. **Zainstaluj pakiety**:
