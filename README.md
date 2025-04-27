@@ -1,50 +1,128 @@
-# Welcome to your Expo app 👋
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## Instrukcja uruchomienia projektu
 
-## Get started
+### Wymagania
 
-1. Install dependencies
+- **Node.js** w wersji 18 lub wyższej
+- **npm** lub **yarn**
+- **Expo CLI** (globalnie zainstalowane)
+- **Android Studio** (do emulatora) lub urządzenie fizyczne (Android / iOS)
+- **Java Development Kit (JDK 17)** lub wyższej
+- **VSCode**
 
-   ```bash
-   npm install
-   ```
+### Instalacja zależności
 
-2. Start the app
-
-   ```bash
-    npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+1. **Klonuj repozytorium**:
 
 ```bash
-npm run reset-project
+https://github.com/twoje-repozytorium/recruitmentTask.git
+cd recruitmentTask
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+2. **Zainstaluj pakiety**:
 
-## Learn more
+```bash
+npm install
+```
+Lub jeśli używasz yarn:
+```bash
+yarn install
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+3. **Zainstaluj dodatkowe paczki native**:
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+```bash
+npm install react-native-video
+npm install react-native-svg react-native-svg-transformer
+```
 
-## Join the community
+4. **Instalacja dodatkowych konfiguracji** (SVG jako komponenty):
 
-Join our community of developers creating universal apps.
+W pliku `metro.config.js` powinno znajdować się:
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+```javascript
+const { getDefaultConfig } = require('expo/metro-config');
+
+const config = getDefaultConfig(__dirname);
+
+config.transformer.babelTransformerPath = require.resolve('react-native-svg-transformer');
+config.resolver.assetExts = config.resolver.assetExts.filter(ext => ext !== 'svg');
+config.resolver.sourceExts.push('svg');
+
+module.exports = config;
+```
+
+5. **Prebuild projektu (jeśli pierwszy raz)**:
+
+```bash
+npx expo prebuild
+```
+
+6. **Uruchomienie aplikacji**:
+
+**Na emulatorze Androida**:
+
+```bash
+npx expo run:android
+```
+
+**Na iOS (Mac wymagany)**:
+
+```bash
+npx expo run:ios
+```
+
+Lub możesz budować APK:
+
+```bash
+npx expo run:android --variant release
+```
+
+### Konfiguracja środowiska Android (JAVA_HOME)
+
+W systemowych zmiennych środowiskowych ustaw:
+
+```plaintext
+JAVA_HOME=C:\Program Files\Java\jdk-11.0.x
+```
+Oraz dodaj do PATH:
+```plaintext
+%JAVA_HOME%\bin
+```
+
+Sprawdź:
+```bash
+java -version
+```
+
+### Uwagi dodatkowe
+
+- **Expo Go NIE obsługuje** `react-native-video`. Musisz korzystać z `expo run:android/ios`.
+
+### Struktura ważnych plików
+
+```plaintext
+/app/screens/DetailsScreen.tsx
+/components/VideoPlayer.tsx
+/assets/video/broadchurch.mp4
+/assets/icons/*.svg
+/metro.config.js
+```
+
+### Przydatne komendy
+
+- Uruchomienie serwera deweloperskiego:
+```bash
+npx expo start
+```
+
+- Budowanie Android APK lokalnie:
+```bash
+cd android && ./gradlew assembleRelease
+```
+
+---
+
+> W razie problemów sprawdź poprawność konfiguracji `JAVA_HOME`, Android SDK oraz wersji Expo SDK.
+
+Powodzenia! 🎉
